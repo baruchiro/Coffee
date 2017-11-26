@@ -28,13 +28,13 @@ exports.saveFirstLastDate = functions.database.ref("{InEx}/{pushId}/date").onWri
 
 
 exports.getHomeWork = functions.https.onRequest((req, res) => {
-    var lessons = {}
+    var lessons = []
     admin.database().ref("works").once("value").then(snapshot => {
         snapshot.child("homeworks").forEach(work => {
             console.log("work: " + JSON.stringify(work.val()));
             temp = work.val();
             temp["lesson"] = snapshot.child("lessons").child(temp["lessonID"]).val();
-            lessons[work.key] = temp;
+            lessons.push(temp);
         });
         res.status(200).send(lessons);
     });

@@ -51,48 +51,47 @@ var optionAll = {
     }
 }
 
-function formatDate(dateLong){
+function formatDate(dateLong) {
     var date = new Date(dateLong);
     return String.format("")
 }
 
 var template = "<p class=\"list-group-item\"><span class=\"badge badge-default badge-pill\">%%date%%</span>עבודה %%number%% ב%%lesson%%</p>"
 
-$.get_homworks = function(){
+$.get_homworks = function () {
     $.ajax({
         url: "https://sapir-coffe.firebaseapp.com/func/works",
         cache: false,
         dataType: 'json',
         success: function (data) {
             console.log("get_homework")
-            //console.log(data);
-            var items = Object.keys(data).map(key=>{
-                return data[key]-7200000;
-            })
-            //console.log(items);
-            items.sort((first,second)=>{
+            console.log(data);
+            data.sort((first, second) => {
                 return first["date"] - second["date"];
             });
-            //console.log(items);
+            console.log("after_sort")
+            console.log(data);
             var today = new Date();
-            today.setHours(0,0,0,0);
-            //console.log(today);
-            items = items.filter(item=>{
+            today.setHours(0, 0, 0, 0);
+            console.log(today);
+            data = data.filter(item => {
                 return item["date"] >= today.getTime();
             })
-            //console.log(items);
-            items.forEach(item =>{
-                var text = template.replace("%%date%%" ,new Intl.DateTimeFormat('he-IL',{
+            console.log("after_filter")
+            console.log(data);
+            data.forEach(item => {
+                var text = template.replace("%%date%%", new Intl.DateTimeFormat('he-IL', {
                     year: '2-digit',
-                    month:'2-digit',
+                    month: '2-digit',
                     day: 'numeric',
                     hour: '2-digit',
-                    minute:'2-digit',
-                    weekday: 'long'
+                    minute: '2-digit',
+                    weekday: 'long',
+                    timeZone: "UTC"
                 }).format(item["date"]))
 
-                text = text.replace("%%number%%",item["number"]);
-                text = text.replace("%%lesson%%",item["lesson"]);
+                text = text.replace("%%number%%", item["number"]);
+                text = text.replace("%%lesson%%", item["lesson"]);
 
                 $("#works").append(text).fadeIn();
             })
@@ -134,7 +133,7 @@ function load_chart_earn_year_2() {
             draw_chart_earn_year_2(data);
         },
         error: function (jqXHR, exception) {
-            console.log("load_chart_earn_year_2 fail: "+ jqXHR.responseText);
+            console.log("load_chart_earn_year_2 fail: " + jqXHR.responseText);
         }
     });
 }
@@ -235,7 +234,7 @@ function load_chart_earn_year_1() {
             draw_chart_earn_year_1(data);
         },
         error: function (jqXHR, exception) {
-            console.log("load_chart_earn_year_1 fail: "+ jqXHR.responseText);
+            console.log("load_chart_earn_year_1 fail: " + jqXHR.responseText);
         }
     });
     var timeFormat = 'DD/MM';
