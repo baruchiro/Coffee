@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lan="he">
+
+<head>
+  <title>פינת הקפה</title>
+  <meta name="description" content="פינת הקפה של מדעי המחשב שנה ב'- המובילים במכללת ספיר" />
+  <meta property="og:title" content="מדעי המחשב - שנה ב'" />
+  <meta property="og:url" content="https://sapir-coffe.firebaseapp.com/" />
+  <meta property="og:description" content="פינת הקפה של מדעי המחשב שנה ב'- המובילים במכללת ספיר">
+  <meta property="og:image" content="https://images.pexels.com/photos/33595/cappuccino-cup-drink-coffee-drink.jpg">
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="shortcut icon" href="http://www.iconarchive.com/download/i54427/kzzu/i-love-you/Coffee-brown.ico">
+  <link rel="icon" type="image/png" href="http://www.iconarchive.com/download/i54427/kzzu/i-love-you/Coffee-brown.ico">
+
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/2.4.1/firebase-ui-auth-rtl.css" />
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  <!--<script src="bootstrap.js"></script>-->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>-->
+  <!-- Original Bootstrap 3.x -->
+  <!--<link rel="stylesheet" href="bootstrap.css">-->
+
+  <!-- Bootstrap RTL Theme -->
+  <link rel="stylesheet" href="bootstrap-rtl.css">
+
+  <meta charset="utf-8">
+  <style media="screen">
+    .positive {
+      color: green;
+    }
+
+    .negative {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid text-right p-5">
+    <div class="row justify-content-center mt-3">
+      <div id="message" class="col p-0">
+        <h3 class="card-header text-center mb-2 font-weight-bold border rounded">מדעי המחשב - שנה ב'</h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="card col p-0">
+        <h5 class="card-header">
+          עבודות להגשה
+        </h5>
+        <div id="works" class="list-group list-group-flush">
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="card col p-0">
+        <h5 class="card-header">
+          פינת קפה
+        </h5>
+        <div class="list-group list-group-flush">
+          <p class="list-group-item">כל כוס במחיר
+            <spam class="font-weight-bold">1&#x20AA;</spam>
+          </p>
+          <p class="list-group-item font-weight-bold">המצב הכספי נכון לעכשיו:
+            <span value="get_cash_status()" id="cash_status"></span>&#x20AA;</p>
+        </div>
+        <div class="card-header" role="tabpanel">
+          <ul class="nav nav-tabs nav-fill card-header-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="year2-tab" data-toggle="tab" href="#year2" role="tab" aria-controls="year2" aria-expanded="true">
+                שנה ב'
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" id="year1-tab" href="#year1" role="tab" aria-controls="year1" aria-expanded="false">
+                שנה א'
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="year2" role="tabpanel" style="max-height: 50%" aria-labelledby="year2-tab" aria-expanded="true">
+            <div class="list-group list-group-flush">
+              <div class="list-group-item">
+                <canvas id="chart_earn_year_2" height="100%" class="mb-3 mh-25"></canvas>
+                <a href="javascript:load_chart_earn_year_2();" class="card-link text-left">רענן</a>
+              </div>
+              <div class="list-group-item">
+                <canvas id="chart_sum_year_2" height="100%" class="mb-3 mh-25"></canvas>
+                <a href="javascript:load_chart_sum_year_2();" class="card-link text-left">רענן</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="tab-pane" id="year1" role="tabpanel" style="max-height: 50%" aria-labelledby="year1-tab" aria-expanded="false">
+            <div class="list-group list-group-flush">
+              <div class="list-group-item">
+                <canvas id="chart_earn_year_1" height="100%" class="mb-3 mh-25"></canvas>
+                <a href="javascript:load_chart_earn_year_1();" class="card-link">רענן</a>
+              </div>
+              <div class="list-group-item">
+                <canvas id="chart_sum_year_1" height="100%" class="mb-3 mh-25"></canvas>
+                <a href="javascript:load_chart_sum_year_1();" class="card-link">רענן</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <script src="moment.js"></script>
+  <script src="moment-with-locales.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+  <script src="index.js" charset="UTF-8"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  
+
+
+  <!--<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC3QyjK6UK6lfZ5RQ7fUUMw9I1eZlsbeZg",
+      authDomain: "sapir-coffe.firebaseapp.com",
+      databaseURL: "https://sapir-coffe.firebaseio.com",
+      projectId: "sapir-coffe",
+      storageBucket: "sapir-coffe.appspot.com",
+      messagingSenderId: "1050154428926"
+    };
+    firebase.initializeApp(config);
+  </script>-->
+
+  <script>
+    $(document).ready(function () {
+      $.get_homworks();
+      $.cash_status_text = $("#cash_status");
+      $.get_cash_status();
+      // $.cash_status_text.hover($.change_status_color);
+      load_chart_earn_year_2();
+      load_chart_earn_year_1();
+      load_chart_sum_year_2();
+      load_chart_sum_year_1();
+    })
+  </script>
+</body>
+
+</html>

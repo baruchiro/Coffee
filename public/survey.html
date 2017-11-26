@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lan="he">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap-rtl.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script src="https://surveyjs.azureedge.net/0.12.35/survey.jquery.min.js"></script>
+<script src="js.js"></script>
+</head>
+
+<body>
+    <div class="container container-fluid text-right p-5" >
+    <div id="surveyContainer"></div>
+    <a id="link">לזאפ</a>
+</div>
+
+    <script>
+        $("#link").hide();
+        Survey.Survey.cssType = "bootstrap";
+
+        var surveyJSON = { pages: [{ elements: [{ type: "checkbox", choices: [{ value: "1763301", text: "מעבד i3" }, { value: "1763302", text: "מעבד i5" }, { value: "1759471", text: "מעבד i7" }], commentText: "בחר דגם מעבד בבקשה", defaultValue: ["1763301"], description: "בחר דגם מעבד בבקשה", hasComment: true, isRequired: true, name: "proccessor", title: "מעבד", validators: [{ type: "answercount", maxCount: 3, minCount: 1, text: "תבחר!!" }] }], name: "page1", title: "עמוד 1" }] }
+
+        var survey = new Survey.Model(surveyJSON);
+        $("#surveyContainer").Survey({
+            model: survey,
+            onComplete: sendDataToServer
+        });
+    </script>
+
+
+</body>
+
+</html>
