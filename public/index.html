@@ -37,7 +37,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>-->
-  <!-- Original Bootstrap 3.x  --> 
+  <!-- Original Bootstrap 3.x  -->
   <!--<link rel="stylesheet" href="bootstrap.css">-->
 
   <!-- Bootstrap RTL Theme -->
@@ -68,77 +68,79 @@
         <h5 class="card-header">
           עבודות להגשה
         </h5>
-        <div id="works" class="list-group list-group-flush">
+        <div id="works" class="list-group list-group-flush pl-3 pr-3">
+
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row justify-content-center mt-3">
-      <div class="card col p-0">
-        <h5 class="card-header">
-          בחנים
-        </h5>
-        <div id="midterm" class="list-group list-group-flush">
-        </div>
+  <div class="row justify-content-center mt-3">
+    <div class="card col p-0">
+      <h5 class="card-header">
+        בחנים
+      </h5>
+      <div id="midterm" class="list-group list-group-flush">
       </div>
     </div>
+  </div>
 
-    <div class="row justify-content-center mt-3">
-      <div class="card col p-0">
-        <h5 class="card-header">
-          פינת קפה
-        </h5>
-        <div class="list-group list-group-flush">
-          <p class="list-group-item">כל כוס במחיר
-            <spam class="font-weight-bold">1&#x20AA;</spam>
-          </p>
-          <p class="list-group-item font-weight-bold">המצב הכספי נכון לעכשיו:
-            <span value="get_cash_status()" id="cash_status"></span>&#x20AA;</p>
-        </div>
-        <div class="card-header" role="tabpanel">
-          <ul class="nav nav-tabs nav-fill card-header-tabs" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="year2-tab" data-toggle="tab" href="#year2" role="tab" aria-controls="year2" aria-expanded="true">
-                שנה ב'
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" id="year1-tab" href="#year1" role="tab" aria-controls="year1" aria-expanded="false">
-                שנה א'
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="tab-content">
-          <div class="tab-pane active" id="year2" role="tabpanel" style="max-height: 50%" aria-labelledby="year2-tab" aria-expanded="true">
-            <div class="list-group list-group-flush">
-              <div class="list-group-item">
-                <canvas id="chart_earn_year_2" height="100%" class="mb-3 mh-25"></canvas>
-                <a href="javascript:load_chart_earn_year_2();" class="card-link text-left">רענן</a>
-              </div>
-              <div class="list-group-item">
-                <canvas id="chart_sum_year_2" height="100%" class="mb-3 mh-25"></canvas>
-                <a href="javascript:load_chart_sum_year_2();" class="card-link text-left">רענן</a>
-              </div>
+  <div class="row justify-content-center mt-3">
+    <div class="card col p-0">
+      <h5 class="card-header">
+        פינת קפה
+      </h5>
+      <div class="list-group list-group-flush">
+        <p class="list-group-item">כל כוס במחיר
+          <spam class="font-weight-bold">1&#x20AA;</spam>
+        </p>
+        <p class="list-group-item font-weight-bold">המצב הכספי נכון לעכשיו:
+          <span value="get_cash_status()" id="cash_status"></span>&#x20AA;</p>
+      </div>
+      <div class="card-header" role="tabpanel">
+        <ul class="nav nav-tabs nav-fill card-header-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="year2-tab" data-toggle="tab" href="#year2" role="tab" aria-controls="year2" aria-expanded="true">
+              שנה ב'
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" id="year1-tab" href="#year1" role="tab" aria-controls="year1" aria-expanded="false">
+              שנה א'
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane active" id="year2" role="tabpanel" style="max-height: 50%" aria-labelledby="year2-tab" aria-expanded="true">
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">
+              <canvas id="chart_earn_year_2" height="100%" class="mb-3 mh-25"></canvas>
+              <a href="javascript:load_chart_earn_year_2();" class="card-link text-left">רענן</a>
             </div>
-          </div>
-
-
-          <div class="tab-pane" id="year1" role="tabpanel" style="max-height: 50%" aria-labelledby="year1-tab" aria-expanded="false">
-            <div class="list-group list-group-flush">
-              <div class="list-group-item">
-                <canvas id="chart_earn_year_1" height="100%" class="mb-3 mh-25"></canvas>
-                <a href="javascript:load_chart_earn_year_1();" class="card-link">רענן</a>
-              </div>
-              <div class="list-group-item">
-                <canvas id="chart_sum_year_1" height="100%" class="mb-3 mh-25"></canvas>
-                <a href="javascript:load_chart_sum_year_1();" class="card-link">רענן</a>
-              </div>
+            <div class="list-group-item">
+              <canvas id="chart_sum_year_2" height="100%" class="mb-3 mh-25"></canvas>
+              <a href="javascript:load_chart_sum_year_2();" class="card-link text-left">רענן</a>
             </div>
           </div>
         </div>
+
+
+        <div class="tab-pane" id="year1" role="tabpanel" style="max-height: 50%" aria-labelledby="year1-tab" aria-expanded="false">
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">
+              <canvas id="chart_earn_year_1" height="100%" class="mb-3 mh-25"></canvas>
+              <a href="javascript:load_chart_earn_year_1();" class="card-link">רענן</a>
+            </div>
+            <div class="list-group-item">
+              <canvas id="chart_sum_year_1" height="100%" class="mb-3 mh-25"></canvas>
+              <a href="javascript:load_chart_sum_year_1();" class="card-link">רענן</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
