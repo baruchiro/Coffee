@@ -57,6 +57,7 @@ function formatDate(dateLong) {
 }
 
 var template = "<p class=\"list-group-item\"><span class=\"badge badge-default badge-pill\">%%date%%</span>עבודה %%number%% ב%%lesson%%</p>"
+var template_mid = "<p class=\"list-group-item\"><span class=\"badge badge-default badge-pill\">%%date%%</span>בוחן ב%%lesson%%</p>"
 
 $.get_homworks = function () {
     $.ajax({
@@ -98,6 +99,49 @@ $.get_homworks = function () {
         },
         error: function (jqXHR, exception) {
             console.log("get_homworks fail: " + jqXHR.responseText);
+        }
+    });
+}
+
+$.get_Midterms = function () {
+    $.ajax({
+        url: "https://sapir-coffe.firebaseapp.com/func/Midterms",
+        cache: false,
+        dataType: 'json',
+        success: function (data) {
+            console.log("get_Midterms")
+            console.log(data);
+            data.sort((first, second) => {
+                return first["date"] - second["date"];
+            });
+            console.log("after_sort")
+            console.log(data);
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+            console.log(today);
+            data = data.filter(item => {
+                return item["date"] >= today.getTime();
+            })
+            console.log("after_filter")
+            console.log(data);
+            data.forEach(item => {
+                var text = template_mid.replace("%%date%%", new Intl.DateTimeFormat('he-IL', {
+                    year: '2-digit',
+                    month: '2-digit',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    weekday: 'long',
+                    timeZone: "UTC"
+                }).format(item["date"]))
+
+                text = text.replace("%%lesson%%", item["lesson"]);
+
+                $("#midterm").append(text).fadeIn();
+            })
+        },
+        error: function (jqXHR, exception) {
+            console.log("get_midterms fail: " + jqXHR.responseText);
         }
     });
 }

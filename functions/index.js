@@ -40,6 +40,19 @@ exports.getHomeWork = functions.https.onRequest((req, res) => {
     });
 });
 
+exports.getMidterms = functions.https.onRequest((req, res) => {
+    var lessons = []
+    admin.database().ref("midterms").once("value").then(snapshot => {
+        snapshot.child("homeworks").forEach(work => {
+            console.log("work: " + JSON.stringify(work.val()));
+            temp = work.val();
+            temp["lesson"] = snapshot.child("lessons").child(temp["lessonID"]).val();
+            lessons.push(temp);
+        });
+        res.status(200).send(lessons);
+    });
+});
+
 /*exports.saveDateExpense = functions.database.ref("expenses/{pushId}/date").onWrite(event => {
     const dateRef = admin.database().ref("/dates");
     //sconst firstDateRef = admin.database().ref("/dates/first");    
