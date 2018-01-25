@@ -56,11 +56,17 @@ function formatDate(dateLong) {
     return String.format("")
 }
 
-var template_work = "<div class=\"list-group-item row justify-content-between\">" +
-    "<div class=\"col col-sm-8 col-xs-12\">עבודה %%number%% ב%%lesson%%</div>" +
-    "<div class=\"badge badge-info badge-pill col col-sm-4 col-xs-12\">%%date%%</div>" +
-    "</div>";
-var template_mid = "<p class=\"list-group-item\"><span class=\"badge badge-info badge-pill\">%%date%%</span>בוחן ב%%lesson%%</p>"
+var template_work = "<div class=\"item list-group-item justify-content-between\">"+
+    "<div class=\"row align-items-center\" data-toggle=\"collapse\" data-parent=\"#works\" href=\"#%%workID%%\" role=\"button\" aria-expanded=\"false\" aria-controls=\"%%workID%%\">"+
+    "<div class=\"col col-sm-8 col-xs-12\">עבודה %%number%% ב%%lesson%%</div>"+
+    "<div class=\"badge badge-info badge-pill col col-sm-4 col-xs-12\">%%date%%</div>"+
+    "</div>"+
+    "<div id=\"%%workID%%\" class=\"collapse row align-items-center\" role=\"tabpanel\">"+
+    "<div class=\"list-group list-group-flush\">"+
+    "<a class=\"list-group-item list-group-item-action list-group-item-success\">העלאת הגשה חדשה</a>"+
+    "</div>"+
+    "</div></div>";
+var template_mid = "<p class=\"list-group-item\"><span class=\"badge badge-info badge-pill\">%%date%%</span>בוחן ב%%lesson%%</p>";
 
 $.get_homworks = function () {
     $.ajax({
