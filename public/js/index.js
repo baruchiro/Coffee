@@ -56,8 +56,11 @@ function formatDate(dateLong) {
     return String.format("")
 }
 
-var template = "<p class=\"list-group-item\"><span class=\"badge badge-default badge-pill\">%%date%%</span>עבודה %%number%% ב%%lesson%%</p>"
-var template_mid = "<p class=\"list-group-item\"><span class=\"badge badge-default badge-pill\">%%date%%</span>בוחן ב%%lesson%%</p>"
+var template_work = "<div class=\"list-group-item row justify-content-between\">" +
+    "<div class=\"col col-sm-8 col-xs-12\">עבודה %%number%% ב%%lesson%%</div>" +
+    "<div class=\"badge badge-info badge-pill col col-sm-4 col-xs-12\">%%date%%</div>" +
+    "</div>";
+var template_mid = "<p class=\"list-group-item\"><span class=\"badge badge-info badge-pill\">%%date%%</span>בוחן ב%%lesson%%</p>"
 
 $.get_homworks = function () {
     $.ajax({
@@ -81,15 +84,16 @@ $.get_homworks = function () {
             console.log("after_filter")
             console.log(data);
             data.forEach(item => {
-                var text = template.replace("%%date%%", new Intl.DateTimeFormat('he-IL', {
-                    year: '2-digit',
-                    month: '2-digit',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    weekday: 'long',
-                    timeZone: "UTC"
-                }).format(item["date"]))
+                var text = template_work
+                    .replace("%%date%%", new Intl.DateTimeFormat('he-IL', {
+                        year: '2-digit',
+                        month: '2-digit',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        weekday: 'long',
+                        timeZone: "UTC"
+                    }).format(item["date"]))
 
                 text = text.replace("%%number%%", item["number"]);
                 text = text.replace("%%lesson%%", item["lesson"]);

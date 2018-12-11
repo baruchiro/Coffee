@@ -1,6 +1,11 @@
 {
   "hosting": {
     "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "/func/sum",
@@ -9,22 +14,26 @@
       {
         "source": "/func/earn/year1",
         "function": "get_earn_year_1"
-      },{
+      },
+      {
         "source": "/func/earn/year2",
         "function": "get_earn_year_2"
       },
       {
         "source": "/func/sum/year1",
         "function": "get_sum_year_1"
-      },{
+      },
+      {
         "source": "/func/sum/year2",
         "function": "get_sum_year_2"
-      },{
-        "source":"/func/works",
-        "function":"getHomeWork"
-      },{
-        "source":"/func/Midterms",
-        "function":"getMidterms"
+      },
+      {
+        "source": "/func/works",
+        "function": "getHomeWork"
+      },
+      {
+        "source": "/func/Midterms",
+        "function": "getMidterms"
       }
     ]
   }
